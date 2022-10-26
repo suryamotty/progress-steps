@@ -1,0 +1,96 @@
+
+:root{
+    --line-border-fill: #3498db;
+    --line-border-empty:#e0e0e0;
+}
+
+
+
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #f6f7fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+.container{
+    text-align: center;
+}
+.progress-container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    width:350px;
+    margin-bottom: 30px;
+}
+.progress-container::before{
+    content: '';
+    /* if we do not put  a content:'', the bar will not see */
+
+    position: absolute;
+    background-color: var(--line-border-empty);
+    top: 50%;
+    left:0;
+    transform: translateY(-50%);
+    /* moved the line in the middle */
+
+    height: 2px;
+    width:100%;
+    z-index:-1;
+    /* the line should be on the backside of the number */
+}
+.progress{
+    position: absolute;
+    background-color:var(--line-border-fill);
+    top: 50%;
+    left:0;
+    transform: translateY(-50%);
+    /* moved the line in the middle */
+
+    height: 2px;
+    width:0%;
+    z-index:-1;
+    /* the line should be on the backside of the number */
+
+    transform: 0.4s ease;
+    /* when we click on a button the bar should be moved to certain duration */
+}
+.circle{
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    width:30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--line-border-empty);
+    transition: 0.4s ease;
+}
+.circle.active{
+    border-color: var(--line-border-fill);    
+}
+.btn{
+    background-color: var(--line-border-fill);
+    color:#fff;
+    border: 0;
+    padding:8px 25px;
+    border-radius: 5px;
+    margin:10px;
+}
+.btn:active{
+    transform: scale(.98);
+}
+.btn:focus{
+    outline: 0;
+}
+.btn:disabled{
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
